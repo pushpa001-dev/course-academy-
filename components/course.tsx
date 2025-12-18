@@ -7,9 +7,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const Course = () => {
-    const containerRef = useRef(null);
-    const headingRef = useRef(null);
-    const circleRef = useRef(null);
+    const containerRef = useRef<HTMLElement>(null);
+    const headingRef = useRef<HTMLHeadingElement>(null);
+    const circleRef = useRef<HTMLDivElement>(null);
 
     const courses = [
         "JAVA",

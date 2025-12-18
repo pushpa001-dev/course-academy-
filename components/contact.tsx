@@ -7,10 +7,10 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const Contact = () => {
-    const containerRef = useRef(null);
-    const headingRef = useRef(null);
-    const leftColRef = useRef(null);
-    const rightColRef = useRef(null);
+    const containerRef = useRef<HTMLDivElement>(null);
+    const headingRef = useRef<HTMLHeadingElement>(null);
+    const leftColRef = useRef<HTMLDivElement>(null);
+    const rightColRef = useRef<HTMLDivElement>(null);
 
     useGSAP(() => {
         const tl = gsap.timeline({
@@ -28,14 +28,16 @@ const Contact = () => {
             ease: "power3.out"
         })
 
-            // Content Animation
-            .from([leftColRef.current.children, rightColRef.current.children], {
+        // Content Animation
+        if (leftColRef.current && rightColRef.current) {
+            tl.from([leftColRef.current.children, rightColRef.current.children], {
                 y: 50,
                 opacity: 0,
                 duration: 0.8,
                 stagger: 0.1,
                 ease: "power2.out"
             }, "-=0.5");
+        }
 
     }, { scope: containerRef });
 

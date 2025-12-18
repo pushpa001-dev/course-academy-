@@ -7,10 +7,10 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const Footer = () => {
-    const containerRef = useRef(null);
-    const headingRef = useRef(null);
-    const linksRef = useRef(null);
-    const iconsRef = useRef(null);
+    const containerRef = useRef<HTMLDivElement>(null);
+    const headingRef = useRef<HTMLHeadingElement>(null);
+    const linksRef = useRef<HTMLDivElement>(null);
+    const iconsRef = useRef<HTMLDivElement>(null);
 
     useGSAP(() => {
         const tl = gsap.timeline({
@@ -28,23 +28,27 @@ const Footer = () => {
             ease: "back.out(1.7)"
         })
 
-            // Links Animation
-            .from(linksRef.current.children, {
+        // Links Animation
+        if (linksRef.current) {
+            tl.from(linksRef.current.children, {
                 y: 20,
                 opacity: 0,
                 duration: 0.6,
                 stagger: 0.1,
                 ease: "power2.out"
-            }, "-=0.5")
+            }, "-=0.5");
+        }
 
-            // Icons Animation
-            .from(iconsRef.current.children, {
+        // Icons Animation
+        if (iconsRef.current) {
+            tl.from(iconsRef.current.children, {
                 scale: 0,
                 opacity: 0,
                 duration: 0.5,
                 stagger: 0.1,
                 ease: "back.out(1.7)"
             }, "-=0.3");
+        }
 
     }, { scope: containerRef });
 

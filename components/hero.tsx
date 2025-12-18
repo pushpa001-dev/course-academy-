@@ -7,11 +7,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
-    const containerRef = useRef(null);
-    const navRef = useRef(null);
-    const headingRef = useRef(null);
-    const subHeadingRef = useRef(null);
-    const watermarkRef = useRef(null);
+    const containerRef = useRef<HTMLElement>(null);
+    const navRef = useRef<HTMLElement>(null);
+    const headingRef = useRef<HTMLHeadingElement>(null);
+    const subHeadingRef = useRef<HTMLDivElement>(null);
+    const watermarkRef = useRef<HTMLDivElement>(null);
 
     useGSAP(() => {
         const tl = gsap.timeline();
